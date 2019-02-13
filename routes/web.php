@@ -54,6 +54,4 @@ Route::middleware('auth')->group(function () {
         Route::post('/projects/{project}', 'ProjectsController@update');       // UPDATE PROJECT
         Route::post('/projects/{project}', 'ProjectsController@destroy'); // DELETE PROJECT
     });
-
-
 });

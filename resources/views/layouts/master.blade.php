@@ -83,12 +83,15 @@
 </head >
 <body class="theme-{{ $theme }}" >
 
+@hasSection('javascript')
+  @yield('javascript')
+@endif
 
-  @yield('admin')
+@yield('admin')
 
 @include('partials.header')
 
-<div class="mt-3 jumbotron container-fluid theme content-theme-{{ $theme }} has-shadow" >
+<div class="mt-3 jumbotron container-fluid theme content-theme-{{ $theme }}" >
   @yield('content')
 </div >
 

@@ -66,7 +66,7 @@
 
               <div class="form-group row mb-0" >
                 <div class="col-md-8 offset-md-4" >
-                  <button type="submit" class="btn @php echo "btn-solid-" . "$theme" @endphp" >
+                  <button type="submit" class="btn bg-primary btn-primary w-25 @php echo "btn-solid-" . "$theme" @endphp" >
                     {{ __('Login') }}
                   </button >
 
@@ -80,6 +80,9 @@
             </form >
           </div >
         </div >
+        <div class="row m-auto text-center m-auto p-1 box" >
+            <a href="/register" class="text-sm" >Create a new account</a >
+          </div >
       </div >
     </div >
   </div >

@@ -29,8 +29,8 @@
                     required >{{ old('title', "")}}</textarea >
         </div >
 
-        <div >
-          <button type="submit" class="btn btn-primary bg-primary btn-solid-{{ $theme }} w-25" >Create new project</button >
+        <div  class="col-md-6 offset-md-4">
+          <button type="submit" class="col-sm-12 btn btn-primary bg-primary btn-solid-{{ $theme }}" >Create new project</button >
         </div >
       </div >
 

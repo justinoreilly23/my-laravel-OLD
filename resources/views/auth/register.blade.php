@@ -6,12 +6,9 @@
       <div class="col-md-8" >
         <div class="card bg-light" >
           <div class="card-header" >{{ __('Register') }}</div >
-
           <div class="card-body" >
             <form method="POST" action="{{ route('register') }}" >
               @csrf
-
-
               <div class="form-group row" >
                 <label for="username" class="col-md-4 col-form-label text-md-right" >Username</label >
 
@@ -79,7 +76,7 @@
 
               <div class="form-group row mb-0" >
                 <div class="col-md-6 offset-md-4" >
-                  <button type="submit" class="btn btn-solid-{{ $theme }} btn-primary bg-primary" >
+                  <button type="submit" class="btn col-sm-8 btn-solid-{{ $theme }} btn-primary bg-primary" >
                     {{ __('Register') }}
                   </button >
                 </div >
@@ -87,6 +84,9 @@
             </form >
           </div >
         </div >
+        <div class="row m-auto text-center m-auto p-1 box" >
+            <a href="/login" class="text-sm" >Login to an existing account</a >
+          </div >
       </div >
     </div >
   </div >

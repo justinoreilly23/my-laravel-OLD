@@ -1,10 +1,15 @@
 @extends('layouts.master')
 
-@section('content')
-  <div class="container-fluid" >
+@section('javascript')
+  <script >
 
+  </script >
+@endsection
+
+@section('content')
+  <div class="container-fluid col-xl-10 col-lg-10" >
     <div class="box bg-light" style="border: 0 !important;" >
-      <form method="POST" action="{{action('ProjectsController@update', $project->id)}}" id="submit" >
+      <form method="POST" action="{{action('ProjectsController@update', $project->id)}}" id="update" >
 
         @method('PATCH')
         @csrf
@@ -22,33 +27,22 @@
           <label for="description" ><b >Description</b ></label >
           <textarea name="description"
                     class="form-control {{ $errors->has('description') ? 'border-danger' : '' }}"
-                    rows="5"
+                    rows="8"
                     cols="45"
                     placeholder="Project description"
                     required >{{ $project->description }}</textarea >
         </div >
       </form >
-
-      <form method="POST" action="{{action('ProjectsController@destroy', $project->id)}}" id="delete" >
-
-        @method('DELETE')
-        @csrf
-
-        @if ($errors->any())
-          <div class="notification is-danger mt-3 mb-0" >
-            <ul class="list-group" >
-              @foreach ($errors->all() as $error)
-                <li class="list-group-item bg-danger text-white p-1 w-auto border-0" >{{ $error }}</li >
-              @endforeach
-            </ul >
-          </div >
-        @endif
-      </form >
-      <div class="p-4 box" style="width:fit-content" >
-        <button type="submit" class="btn btn-primary bg-primary mr-2 ml-0" form="submit" >Update</button >
-        <button type="submit" class="btn btn-danger bg-danger mr-2 ml-0" form="delete" >Delete</button >
+      <div class="row" >
+        <div class="col-xl-3 col-lg-3 col-md-8 col-sm-8" >
+          <button type="submit" class="btn btn-success bg-success w-100" form="update" >Save</button >
+        </div >
+        <div class="col-xl-1 col-lg-1 col-md-4 col-sm-4" >
+          <a href="{{action('ProjectsController@show', $project->id)}}" class="w-100">
+            <button class="btn border-primary" >Cancel</button >
+          </a >
+        </div >
       </div >
     </div >
   </div >
-
 @endsection

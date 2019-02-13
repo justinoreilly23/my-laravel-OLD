@@ -12,7 +12,9 @@ class ProjectsController extends Controller {
 
     public static function index()
     {
-        $projects = auth()->id()->projects;
+//        $projects = auth()->id()->projects;
+
+        $projects = Project::all()->where('owner_id', auth()->id());
 
         return view('projects.index', compact('projects'));
     }
