@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\UserRegistered;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -72,5 +73,7 @@ class RegisterController extends Controller {
                              ]);
 
         Mail::to(env('MAIL_TO'))->send(new UserRegistered($user));
+
+        return $user;
     }
 }
