@@ -5,7 +5,7 @@
   <div class="text-center" >
     <div class="container mb-4" >
       <a href="/projects/create" class="col-4" >
-        <button class="btn btn-lg btn-primary bg-primary" >
+        <button class="btn btn-lg btn-info bg-info" >
           <i class="fas fa-plus-square mr-1" ></i >
           Create a new project
         </button >
@@ -13,11 +13,10 @@
     </div >
   </div >
 
-  <hr >
+  <hr class="w-50">
 
   <ul class="container-fluid" >
     @foreach ($projects as $project)
-
       <li class="project-card rounded has-shadow m-auto list-unstyled"
           style="width: 75%; margin-top: 10px !important" >
         <a href="{{ action('ProjectsController@show', $project->id) }}" >

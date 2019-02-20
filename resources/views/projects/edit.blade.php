@@ -38,11 +38,12 @@
           <button type="submit" class="btn btn-success bg-success w-100" form="update" >Save</button >
         </div >
         <div class="col-xl-1 col-lg-1 col-md-4 col-sm-4" >
-          <a href="{{action('ProjectsController@show', $project->id)}}" class="w-100">
+          <a href="{{action('ProjectsController@show', $project->id)}}" class="w-100" >
             <button class="btn border-primary" >Cancel</button >
           </a >
         </div >
       </div >
+      @include('partials.errors')
     </div >
   </div >
 @endsection

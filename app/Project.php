@@ -2,11 +2,23 @@
 
 namespace App;
 
+use App\Events\ProjectCreatedEvent;
+use App\Mail\MailProjectCreated;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class Project extends Model {
 
     protected $guarded = [];
+
+    protected $dispatchesEvents = [
+//        'created' => ProjectCreatedEvent::class,
+    ];
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function tasks()
     {

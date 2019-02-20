@@ -24,7 +24,7 @@
                 @csrf
                 <button type="submit"
                         class="btn-i-danger btn pl-0 pr-0"
-                        onclick="return confirm('Delete {{ $project->title }}?')" >
+                        onclick="return confirm('Permanently delete project {{$project->title}}?')" >
                   <i class="fas fa-trash fa-2x" ></i >
                 </button >
               </form >
@@ -46,7 +46,7 @@
             </a >
           </div >
         </div >
-        <p class="box" >"{{ $project->description }}"</p >
+        <p class="box text-monospace" ><q >{{ $project->description }}</q ></p >
       </div >
 
 
@@ -58,14 +58,14 @@
           <div class="box" >
             @foreach($project->tasks as $task)
               <div class="@if($task->completed) hidden @endif" >
-                <form method="POST" action="/completed-tasks/{{ $task->id }}" >
+                <form method="POST" action="{{ action('CompletedTasksController@store', $task->id) }}" >
 
                   @if ($task->completed)
                     @method('DELETE')
                   @endif
                   @csrf
 
-                  <label class="{{ $task->completed ? 'is-complete' : '' }}" for="completed" >
+                  <label class="{{ $task->completed ? 'is-complete text-muted' : '' }}" for="completed" >
                     <input type="checkbox"
                            name="completed"
                            onChange="this.form.submit();" {{ $task->completed ? 'checked' : '' }}>
@@ -77,8 +77,6 @@
           </div >
         @endif
 
-        @include('partials.errors')
-
         @can('interact', $project)
           <form method="POST" action="/projects/{{ $project->id }}/tasks" class="mb-3" id="add-task" >
 
@@ -87,12 +85,14 @@
 
             <div class="field" >
               <label for="description" class="label text-muted text-small" ></label >
-              <div class="control row" >
-                <div class="col-md-6" >
-                  <input type="text" class="input" name="description" placeholder="...buy supplies" >
+              <div class="columns" >
+                <div class="column is-6-desktop is-7-tablet" >
+                  <input type="text" class="input" name="description" placeholder="...buy supplies" required >
                 </div >
-                <div class="col-md-6" >
-                  <button type="submit" class="button btn-plus" form="add-task" ><i class="fa fa-plus" ></i ></button >
+                <div class="column is-2-desktop is-4-tablet" >
+                  <button type="submit" class="btn btn-plus btn-info bg-info w-100" form="add-task" >
+                    <i class="fa fa-plus" ></i >
+                  </button >
                 </div >
               </div >
             </div >

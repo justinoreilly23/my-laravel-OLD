@@ -1,9 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-
-  <div class="form-group" >
-    <form method="POST" action="/projects" >
+  <div class="form-group box bg-light" >
+    <form method="POST" action="/projects" id="create" >
 
       {{ csrf_field() }}
 
@@ -26,16 +25,26 @@
                     rows="5"
                     cols="45"
                     placeholder="Project description"
-                    required >{{ old('title', "")}}</textarea >
-        </div >
-
-        <div  class="col-md-6 offset-md-4">
-          <button type="submit" class="col-sm-12 btn btn-primary bg-primary btn-solid-{{ $theme }}" >Create new project</button >
+                    required >{{ old('title')}}</textarea >
         </div >
       </div >
-
-      @include('partials.errors')
-
     </form >
+    <div class="container-fluid" >
+      <div class="columns" >
+        <div class="column is-3-desktop is-3-tablet is-6-mobile" >
+          <button type="submit" class="w-100 btn btn-info bg-info btn-solid-{{ $theme }}" form="create" >
+            Create new project
+          </button >
+        </div >
+        <div class="column is-2-desktop is-2-mobile" >
+          <a href="{{ action('ProjectsController@index') }}" >
+            <button class="w-100 btn btn-secondary bg-secondary btn-solid-{{ $theme }}" >
+              Cancel
+            </button >
+          </a >
+        </div >
+      </div >
+      @include('partials.errors')
+    </div >
   </div >
 @endsection

@@ -1,6 +1,7 @@
 @component('mail::message')
-  # New Project: {{ $project->title }}
+  # You've created a new project!
 
+  {{ $project->title }}
   {{ $project->description }}
 
   @component('mail::button', ['url' => url('/projects/' . $project->id)])

@@ -7,20 +7,20 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UserRegistered extends Mailable {
+class MailProjectCreated extends Mailable {
 
     use Queueable, SerializesModels;
 
-    public $user;
+    public $project;
 
     /**
      * Create a new message instance.
      *
      * @param $project
      */
-    public function __construct($user)
+    public function __construct($project)
     {
-        $this->user = $user;
+        $this->project = $project;
     }
 
     /**
@@ -30,6 +30,6 @@ class UserRegistered extends Mailable {
      */
     public function build()
     {
-        return $this->markdown('mail.user-registered');
+        return $this->markdown('mail.project-created');
     }
 }

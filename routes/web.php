@@ -39,8 +39,6 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('projects', 'ProjectsController');
-    Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
-
     /*
      * * * * * * * * * * * * * * * *
      * * * * * * * * * * * * * * * *
@@ -49,9 +47,13 @@ Route::middleware('auth')->group(function () {
      * * * * * * * * * * * * * * * *
     */
     Route::middleware('can:interact,project')->group(function () {
-        Route::get('/projects/{project}', 'ProjectsController@show');          // VIEW PROJECT
-        Route::get('/projects/{project}/edit', 'ProjectsController@edit');     // EDIT PROJECT
-        Route::post('/projects/{project}', 'ProjectsController@update');       // UPDATE PROJECT
-        Route::post('/projects/{project}', 'ProjectsController@destroy'); // DELETE PROJECT
+        Route::get('/projects/{project}', 'ProjectsController@show');      // VIEW PROJECT
+        Route::get('/projects/{project}/edit', 'ProjectsController@edit'); // EDIT PROJECT
+        Route::post('/projects/{project}', 'ProjectsController@update');   // UPDATE PROJECT
+        Route::post('/projects/{project}', 'ProjectsController@destroy');  // DELETE PROJECT
+
+        Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');     // CREATE TASK
+        Route::post('/completed-tasks/{task}', 'CompletedTasksController@store');     // UPDATE TASK
+        Route::delete('/completed-tasks/{task}', 'CompletedTasksController@destroy'); // DELETE TASK
     });
 });

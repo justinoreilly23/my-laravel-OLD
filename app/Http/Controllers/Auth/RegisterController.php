@@ -71,9 +71,6 @@ class RegisterController extends Controller {
                                  'email'    => $data['email'],
                                  'password' => Hash::make($data['password']),
                              ]);
-
-        Mail::to(env('MAIL_TO'))->send(new UserRegistered($user));
-
         return $user;
     }
 }

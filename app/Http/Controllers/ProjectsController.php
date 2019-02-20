@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Project;
-use App\Mail\ProjectCreated;
 
 
 class ProjectsController extends Controller {
 
     public static function index()
     {
-//        $projects = auth()->id()->projects;
-
-        $projects = Project::all()->where('owner_id', auth()->id());
+        $projects = auth()->user()->projects;
 
         return view('projects.index', compact('projects'));
     }
@@ -29,19 +28,9 @@ class ProjectsController extends Controller {
         return view('projects.create');
     }
 
-    public function store()
+    public function store(StoreProjectRequest $request)
     {
-        $attributes = request()->validate([
-                                              'title'       => ['required', 'min:3', 'max:32'],
-                                              'description' => ['required', 'min:3'],
-                                          ]);
-
-        $attributes['owner_id'] = auth()->id();
-
-        $project = Project::create($attributes);
-
-
-        \Mail::to(env('MAIL_TO'))->send(new ProjectCreated($project));
+        Project::create($request->all());
 
         return redirect('/projects');
     }
@@ -51,17 +40,11 @@ class ProjectsController extends Controller {
         return view('projects.edit', compact('project'));
     }
 
-    public function update(Project $project)
+    public function update(UpdateProjectRequest $request)
     {
-        $attributes = request()->validate(
-            [
-                'title'       => ['required', 'min:3', 'max:32'],
-                'description' => ['required', 'min:3', 'max:1024'],
-            ]);
+        Project::update($request->all());
 
-        $project->update($attributes);
-
-        return view('projects.show', compact('project'));
+        return view('projects.show');
     }
 
     public function destroy(Project $project)
