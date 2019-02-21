@@ -12,7 +12,7 @@ class Project extends Model {
     protected $guarded = [];
 
     protected $dispatchesEvents = [
-//        'created' => ProjectCreatedEvent::class,
+        'created' => ProjectCreatedEvent::class,
     ];
 
     public function owner()

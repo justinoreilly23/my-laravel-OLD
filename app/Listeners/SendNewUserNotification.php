@@ -2,13 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Mail\MailProjectCreated;
-use App\Events\ProjectCreatedEvent;
+use App\Events\NewUserEvent;
+use App\Mail\MailNewUser;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 
-class SendProjectCreatedNotification {
+class SendNewUserNotification {
 
     /**
      * Create the event listener.
@@ -23,11 +23,11 @@ class SendProjectCreatedNotification {
     /**
      * Handle the event.
      *
-     * @param  ProjectCreatedEvent $event
+     * @param NewUserEvent $event
      * @return void
      */
-    public function handle(ProjectCreatedEvent $event)
+    public function handle(NewUserEvent $event)
     {
-        dd($event);
+        Mail::to($event->email)->send(new MailNewUser($event->project));
     }
 }

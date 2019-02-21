@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\NewUserEvent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,6 +13,11 @@ class User extends Authenticatable {
 
     use Notifiable;
     use HasRoleAndPermission;
+
+    protected $dispatchesEvents = [
+        // send an email to the new user!
+        'created' => NewUserEvent::class,
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -42,5 +48,10 @@ class User extends Authenticatable {
     public function projects()
     {
         return $this->hasMany(Project::class, 'owner_id');
+    }
+
+    public function profile()
+    {
+        $this->hasOne(UserProfile::class, 'owner_id');
     }
 }

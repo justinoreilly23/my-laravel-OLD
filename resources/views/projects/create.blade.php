@@ -1,13 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-  <div class="form-group box bg-light" >
+  <div class="container-fluid col-xl-10 col-lg-10" >
     <form method="POST" action="/projects" id="create" >
 
       {{ csrf_field() }}
 
       <div class="container-fluid" >
-
         <div class="form-group" >
           <h5 ><label for="title" >Title</label ></h5 >
           <input type="text"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DeleteProjectRequest;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\User;
@@ -47,9 +48,9 @@ class ProjectsController extends Controller {
         return view('projects.show');
     }
 
-    public function destroy(Project $project)
+    public function destroy(DeleteProjectRequest $request)
     {
-        $project->delete();
+        Project::delete($request->all());
 
         return redirect('/projects');
     }

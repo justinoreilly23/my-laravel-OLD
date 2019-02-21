@@ -5,18 +5,18 @@ namespace App\Events;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 
-class ProjectCreatedEvent {
+class NewUserEvent {
 
     use Dispatchable, SerializesModels;
-    public $project;
+    public $user;
 
     /**
      * Create a new event instance.
      *
-     * @param $project
+     * @param $user
      */
-    public function __construct($project)
+    public function __construct($user)
     {
-        $this->project = $project;
+        $this->user = $user;
     }
 }

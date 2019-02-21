@@ -81,19 +81,19 @@
   </title >
 
 </head >
-<body class="theme-{{ $theme }}" >
+<body class="theme-{{ $theme }} w-100 position-absolute" >
 
-@hasSection('javascript')
-  @yield('javascript')
+@if(auth()->id() == 1)
+    @include('partials.admin')
 @endif
-
-@yield('admin')
 
 @include('partials.header')
 
-<div class="mt-3 jumbotron container-fluid theme content-theme-{{ $theme }}" >
-  @yield('content')
-</div >
+@hassection('content')
+  <div class="mt-3 jumbotron container-fluid theme content-theme-{{ $theme }}" >
+    @yield('content')
+  </div >
+@endif
 
 @include('partials.footer')
 
@@ -108,6 +108,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous" ></script >
-
 </body >
 </html >

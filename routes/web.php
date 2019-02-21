@@ -37,8 +37,8 @@ Route::get('/contact', 'PageController@contact')->name('contact');
 */
 Route::middleware('auth')->group(function () {
 
-
     Route::resource('projects', 'ProjectsController');
+
     /*
      * * * * * * * * * * * * * * * *
      * * * * * * * * * * * * * * * *
