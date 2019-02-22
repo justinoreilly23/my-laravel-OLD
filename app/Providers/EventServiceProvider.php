@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\NewUserEvent;
 use App\Events\ProjectCreatedEvent;
+use App\Listeners\SendNewUserNotification;
 use App\Listeners\SendProjectCreatedNotification;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
@@ -23,6 +25,10 @@ class EventServiceProvider extends ServiceProvider
 
         ProjectCreatedEvent::class => [
             SendProjectCreatedNotification::class,
+        ],
+
+        NewUserEvent::class => [
+            SendNewUserNotification::class,
         ]
     ];
 

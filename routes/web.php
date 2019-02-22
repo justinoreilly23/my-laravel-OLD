@@ -1,5 +1,6 @@
 <?php
 
+use App\Project;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
  * * * * * * * * * * * * * * * *
  * * * * * * * * * * * * * * * *
 */
+
 Auth::routes();
 Route::get('/', 'PageController@home');
 Route::get('/home', 'HomeController@index')->name('home');

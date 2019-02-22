@@ -12,6 +12,8 @@ class MailProjectCreated extends Mailable {
     use Queueable, SerializesModels;
 
     public $project;
+    public $subject;
+    public $message;
 
     /**
      * Create a new message instance.
@@ -21,6 +23,8 @@ class MailProjectCreated extends Mailable {
     public function __construct($project)
     {
         $this->project = $project;
+        $this->subject = ("Project" . " " . "\"$project->title\"" . " " . "created");
+        $this->message = ("Project" . " " . "\"$project->title\"" . " " . "started, on" . " " . $project->created_at);
     }
 
     /**
@@ -30,6 +34,11 @@ class MailProjectCreated extends Mailable {
      */
     public function build()
     {
-        return $this->markdown('mail.project-created');
+        $subject = $this->subject;
+        $message = $this->message;
+
+        return $this->subject($subject)
+                    ->markdown('mail.project-created')
+                    ->with($message);
     }
 }

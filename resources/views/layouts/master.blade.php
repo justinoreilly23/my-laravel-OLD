@@ -81,9 +81,9 @@
   </title >
 
 </head >
-<body class="theme-{{ $theme }} w-100 position-absolute" >
+<body class="theme-{{ $theme }}" >
 
-@if(auth()->id() == 1)
+@if(auth()->id() == 1 && auth()->check())
     @include('partials.admin')
 @endif
 

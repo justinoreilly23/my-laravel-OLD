@@ -28,6 +28,6 @@ class SendNewUserNotification {
      */
     public function handle(NewUserEvent $event)
     {
-        Mail::to($event->email)->send(new MailNewUser($event->project));
+        Mail::to($event->user->email)->send(new MailNewUser($event->user));
     }
 }

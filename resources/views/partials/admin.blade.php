@@ -1,8 +1,11 @@
-<div class=" text-center position-relative" >
+<div class="text-center position-sticky" >
   <div class="bg-warning text-white" >
-    <div class="columns is-centered mr-auto" >
+    <div class="columns is-centered is-vcentered mr-auto" >
       <div class="column is-narrow" >
-        <a href="/admin/dashboard" class="text-white" >Admin CP</a >
+        <b>ADMIN</b>
+      </div >
+      <div class="column is-narrow" >
+        <a href="/admin/dashboard" class="text-white" >Control Panel</a >
       </div >
       <div class="column is-narrow" >
         <a href="/admin/users" class="text-white" >Users</a >

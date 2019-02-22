@@ -14,7 +14,7 @@ class ProjectsController extends Controller {
 
     public static function index()
     {
-        $projects = auth()->user()->projects;
+        $projects = Project::where('owner_id', auth()->id())->simplePaginate(4);
 
         return view('projects.index', compact('projects'));
     }
@@ -48,9 +48,9 @@ class ProjectsController extends Controller {
         return view('projects.show');
     }
 
-    public function destroy(DeleteProjectRequest $request)
+    public function destroy()
     {
-        Project::delete($request->all());
+        Project::delete();
 
         return redirect('/projects');
     }

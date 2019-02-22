@@ -13,7 +13,7 @@
     </div >
   </div >
 
-  <hr class="w-50">
+  <hr class="w-75" >
 
   <ul class="container-fluid" >
     @foreach ($projects as $project)
@@ -31,5 +31,6 @@
       </li >
     @endforeach
   </ul >
+    {{ $projects->onEachSide(1)->links() }}
 
 @endsection
