@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 
-class User extends Authenticatable {
+class User extends \TCG\Voyager\Models\User {
 
     use Notifiable;
     use HasRoleAndPermission;

@@ -59,3 +59,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/completed-tasks/{task}', 'CompletedTasksController@destroy'); // DELETE TASK
     });
 });
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
