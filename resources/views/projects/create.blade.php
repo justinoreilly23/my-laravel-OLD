@@ -3,9 +3,7 @@
 @section('content')
   <div class="container-fluid col-xl-10 col-lg-10 box bg-light" >
     <form method="POST" action="/projects" id="create" >
-
       {{ csrf_field() }}
-
       <div class="container-fluid" >
         <div class="form-group" >
           <h5 ><label for="title" >Title</label ></h5 >
@@ -16,7 +14,6 @@
                  value="{{ old('title') }}"
                  required >
         </div >
-
         <div class="form-group" >
           <h5 ><label for="description" >Description</label ></h5 >
           <textarea name="description"

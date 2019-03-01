@@ -13,7 +13,6 @@ class ProjectPolicy {
     public function interact(?User $user, Project $project)
     {
         return $project->owner_id == $user->id;
-
     }
 
     /**

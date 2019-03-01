@@ -1,0 +1,17 @@
+{
+  "scss": {
+    "app.css": [
+      "app.scss",
+      "bootstrap.scss",
+      "bootstrap-grid.scss",
+      "bootstrap-reboot.scss",
+      "bulma.scss",
+      "custom.scss"
+    ]
+  },
+  "js": {
+    "app.js": [
+      "app.js"
+    ]
+  }
+}

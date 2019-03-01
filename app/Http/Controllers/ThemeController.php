@@ -34,8 +34,6 @@ class ThemeController extends Controller {
     {
         $final = $this->getRandomTheme();
 
-        $final = " ";
-
-        return $final;
+        return " ";
     }
 }
